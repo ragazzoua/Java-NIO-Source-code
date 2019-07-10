@@ -3,6 +3,7 @@ package com.company;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
@@ -36,14 +37,15 @@ public class Main {
             numbytes = binChannnel.write(intBuffer);
             System.out.println("numbytes written was " + numbytes);
 
-//            FileInputStream file = new FileInputStream("data.txt");
-//            FileChannel channel = file.getChannel();
-//            Path dataPath = FileSystems.getDefault().getPath("data.txt");
-//            Files.write(dataPath, "\nLine 2".getBytes("UTF-8"), StandardOpenOption.APPEND);
-//            List<String> lines = Files.readAllLines(dataPath);
-//            for(String line : lines) {
-//                System.out.println(line);
-//            }
+//            RandomAccessFile ra = new RandomAccessFile("data.dat", "rw");
+//            byte[] b = new byte[outputBytes.length];
+//            ra.read(b);
+//            System.out.println(new String(b));
+//
+//            long int1 = ra.readInt();
+//            long int2 = ra.readInt();
+//            System.out.println(int1);
+//            System.out.println(int2);
 
         } catch (IOException e) {
             e.printStackTrace();
