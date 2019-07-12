@@ -37,6 +37,40 @@ public class Main {
             numbytes = binChannnel.write(intBuffer);
             System.out.println("numbytes written was " + numbytes);
 
+            RandomAccessFile ra = new RandomAccessFile("data.dat", "rwd");
+            FileChannel channel = ra.getChannel();
+            outputBytes[0] = 'a';
+            outputBytes[1] = 'b';
+            buffer.flip();
+            long numBytesRead = channel.read(buffer);
+            if (buffer.hasArray()) {
+                System.out.println("byte buffer " + new String(buffer.array()));
+            }
+// Absolute read
+            intBuffer.flip();
+            numbytes = channel.read(intBuffer);
+            System.out.println(intBuffer.get(0));
+            intBuffer.flip();
+            numbytes = channel.read(intBuffer);
+            System.out.println(intBuffer.get(0));
+
+
+            //Relative read
+//            intBuffer.flip();
+//            numBytesRead = channel.read(intBuffer);
+//            intBuffer.flip();
+//            System.out.println(intBuffer.getInt());
+//            intBuffer.flip();
+//            numBytesRead = channel.read(intBuffer);
+//            intBuffer.flip();
+//            System.out.println(intBuffer.getInt());
+            channel.close();
+            ra.close();
+
+
+//            System.out.println("outputBytes = " + new String(outputBytes));
+
+
 //            RandomAccessFile ra = new RandomAccessFile("data.dat", "rw");
 //            byte[] b = new byte[outputBytes.length];
 //            ra.read(b);
