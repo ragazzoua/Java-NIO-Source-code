@@ -20,16 +20,21 @@ public class Main {
              FileChannel binChannnel = binFile.getChannel()) {
 
             ByteBuffer buffer = ByteBuffer.allocate(100);
-
             byte[] outputBytes = "Hello World!".getBytes();
-            buffer.put(outputBytes);
-            buffer.putInt(245);
-            buffer.putInt(-98765);
-
             byte[] outputBytes2 = "Nice to meet you".getBytes();
-            buffer.put(outputBytes2);
-            buffer.putInt(1000);
+            buffer.put(outputBytes).putInt(245).putInt(-98765).put(outputBytes2).putInt(1000);
             buffer.flip();
+
+
+
+//            byte[] outputBytes = "Hello World!".getBytes();
+//            buffer.put(outputBytes);
+//            buffer.putInt(245);
+//            buffer.putInt(-98765);
+//            byte[] outputBytes2 = "Nice to meet you".getBytes();
+//            buffer.put(outputBytes2);
+//            buffer.putInt(1000);
+//            buffer.flip();
 
 
             binChannnel.write(buffer);
